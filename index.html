@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ostereiersuche Speedrun</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      overflow: hidden; /* Scrolling deaktiviert */
+      height: 100vh;
+      background: #fef6e4;
+    }
+    #start-game, #restart-game {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background: #ff8fab;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #restart-game {
+      display: none;
+      left: 150px;
+    }
+    /* Start Button vergrößert */
+    #start-game {
+      font-size: 24px;
+      padding: 15px 30px;
+    }
+    #timer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: #ff8fab;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+    #result {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      font-size: 24px;
+      background: #fff;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 2px solid #ff8fab;
+      z-index: 10;
+      display: none;
+    }
+    #message {
+      position: fixed;
+      top: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      padding: 20px;
+      border: 2px solid #ff8fab;
+      border-radius: 12px;
+      font-size: 20px;
+      display: none;
+      z-index: 10;
+    }
+    #game-area {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+    .egg {
+      position: absolute;
+      font-size: 40px;
+      cursor: pointer;
+    }
+    .deco {
+      position: absolute;
+      pointer-events: none;
+    }
+    .hint-button {
+      position: fixed;
+      bottom: 20px;
+      padding: 10px;
+      background: #ff8fab;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      z-index: 10;
+    }
+    #hint-vertical {
+      left: 20px;
+    }
+    #hint-horizontal {
+      right: 20px;
+    }
+    #hint-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff8fab;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      z-index: 10;
+      font-size: 18px;
+    }
+    /* Lautstärkeregler Styling */
+    #volume-control {
+      position: fixed;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      background: #ff8fab;
+      padding: 5px 10px;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+    }
+    #volume-slider {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <button id="start-game">Start</button>
+  <button id="restart-game">Nochmal spielen</button>
+  <div id="timer"></div>
+  <div id="result"></div>
+  <div id="message">Mach einen Screenshot und teile deine Zeit auf Instagram/Twitter!</div>
+  <button id="hint-vertical" class="hint-button">👓</button>
+  <button id="hint-horizontal" class="hint-button">👓</button>
+  <div id="hint-counter">Hinweise: 0/2</div>
+  <div id="game-area"></div>
+  
+  <!-- Hintergrundmusik aus dem audio Ordner -->
+  <audio id="bg-music" loop>
+    <source src="audio/background.mp3" type="audio/mp3">
+    Dein Browser unterstützt dieses Audioformat nicht.
+  </audio>
+
+  <!-- Lautstärkeregelung -->
+  <div id="volume-control">
+    <label for="volume-slider">Lautstärke:</label>
+    <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5">
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
